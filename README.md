@@ -1,7 +1,8 @@
-[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
 # JS-dicountCalculator
 
-## About the project  
+[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com) 
+
+## About the project   
 
 This is a discount calculator created for a freelance worker who wants to calculate his rates given 8 hour days with a discount if the project spans several months. He wants to give a discount for every full month worked and any remaining days that don't equal a full month will be billed at his regular rate. This calculator is free to use and needs no permissions for use. I created this calculator via the popular coding website [Exercism](https://exercism.org/dashboard) with no help and a lot of googling about math.  
 
