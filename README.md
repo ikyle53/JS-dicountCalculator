@@ -30,6 +30,10 @@ I'd like to make this universal so that anyone can enter inputs and recieve accu
 
 [WikiHow](https://www.wikihow.com/Calculate-a-Discount) - Simple discounts
 
-
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="img.png">
+  <source media="(prefers-color-scheme: light)" srcset="img.png">
+  <img alt="Pen and Paper workout" src="img.png" height="500px">
+</picture>
 
 
