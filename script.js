@@ -6,30 +6,51 @@ his rates given 8 hour days with a discount if the project spans several months.
 wants to give a discount for every full month worked and any remaining days that don't
 equal a full month will be billed at his regular rate.
 
- ---------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 */
 
-// This function calculates a daily income by simply multiplying an hourly pay rate by 8 hours.
-export function dayRate(ratePerHour) {
-    return ratePerHour * 8
-  }
 
-/* 
+///////////////////////////////////   Global Variables   ///////////////////////////////
+
+let dailyRate = parseInt(document.getElementById('hourlyRate'));
+let numberOfDays = parseInt(document.getElementById('numDays'));
+let discountNumber = parseInt(document.getElementById('discount'));
+ansr.innerHTML = 0;
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* -------------------------------- Daily rate function --------------------------------
+Captures how much you make in an 8 hour day 
+*/
+
+function dayRate(dailyRate) {
+  return dailyRate * 8
+}
+
+
+/* -------------------------------- Calculation function --------------------------------
+
 You'll see in the next function that it takes in 3 parameters. 
-- The ratePerHour (which can be used with the dayRate() function above) 
-- numDay - number of days needed to complete the project
-- discount - the percent discount applied for every month of work
+1. The dailyRate (which can be used with the dayRate() function above) 
+2. numberOfDays - number of days needed to complete the project
+3. discount - the percent discount applied for every month of work. I divided it by 100
+   to make it into a percentage automatically. The user can't enter a decimal as the input.
 */ 
 
-export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
+function priceWithMonthlyDiscount() {
 
     // If a discount isn't being applied it can still calculate a regular rate
     // with the below 'if' statement
 
-    if (discount <= 0) {
-      return dayRate(ratePerHour) * Math.floor(numDays)
+    if (discountNumber.value <= 0) {
+      return ansr.innerHTML = dayRate(dailyRate.value) * Math.floor(numberOfDays.value)
     } else {
-      return Math.ceil(
+
+      // If there's a dicount and it's above 0 the following code will be read and returned.
+
+      let discountConversion = discountNumber.value / 100;
+      return ansr.innerHTML = Math.ceil(
 
         // I'm going to break this down into several pieces so it's more understandable
  
@@ -43,13 +64,14 @@ export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
         discounted. I then take the resulting months and multiply it by 22 
         working days in order to get my total days discounted.
 
-        Example: dayRate(16) * (numDays(130) / 22) * 22)
+        Example: dayRate(16) * (numberOfDays(130) / 22) * 22)
         130 days divided by 22 = 5 (rounded down)
         5 * 22 = 110 days that will be discounted
         110 day * $128 (using the dayRate function from above) = $14,080
         */
 
-        ((dayRate(ratePerHour) * (Math.floor(numDays / 22) * 22))
+
+        ((dayRate(dailyRate.value) * (Math.floor(numberOfDays.value / 22) * 22))
 
         /*
         The second calculation is using the same calculation from above but
@@ -61,28 +83,33 @@ export function priceWithMonthlyDiscount(ratePerHour, numDays, discount) {
         2,112 is then subtracted from 14,080 = $11,968 
         */
 
-        - ((dayRate(ratePerHour) * (Math.floor(numDays / 22) * 22)) * discount)) 
+        - ((dayRate(dailyRate.value) * (Math.floor(numberOfDays.vlaue / 22) * 22)) * discountConversion)) 
 
         /*
         Lastly, I want to add the number of days remaining that don't complete
-        a full month with a regular rate applied. The number of days discount
+        a full month with a regular rate applied. The number of days discounted
         is subtracted from the total number of days needed to complete the project.
         The remaining days are then multipled by the daily rate to give us the
         amount that won't have a discount applied. It's then added to 11,968.
 
-        Example: 130 days - 110 days = 20 days
-        20 days * $128 = 2560
+        Example: 130 days - 110 discounted days = 20 non-discounted days
+        20 days * $128 daily rate = 2560
         11,968 + 2560 = $14,528
 
-        $14,528 is then returned as the solution provided that the hourly rate
-        is $16/hr, the project needs 130 days to complet, and the discount is 
+        $14,528 is then returned provided that the hourly rate
+        is $16/hr, the project needs 130 days to complete, and the discount is 
         15%.
         */
-        + (numDays - Math.floor((numDays / 22)) * 22) * dayRate(ratePerHour))
+
+        + (numberOfDays.value - Math.floor((numberOfDays.value / 22)) * 22) * dayRate(dailyRate.value));
 
         /*
         Lastly, here's the algorithm in full:
-        return Math.ceil(((dayRate(ratePerHour) * (Math.floor(numDays / 22) * 22)) - ((dayRate(ratePerHour) * (Math.floor(numDays / 22) * 22)) * discount)) + (numDays - Math.floor((numDays / 22)) * 22) * dayRate(ratePerHour))
+        return Math.ceil(((dayRate(dailyRate) * (Math.floor(numberOfDays / 22) * 22)) - ((dayRate(dailyRate) * (Math.floor(numberOfDays / 22) * 22)) * discount)) + (numberOfDays - Math.floor((numberOfDays / 22)) * 22) * dayRate(dailyRate))
         */
-    }
-  }
+    };
+  };
+
+
+// Event listener for submit button
+smtbtn.addEventListener('click', priceWithMonthlyDiscount)

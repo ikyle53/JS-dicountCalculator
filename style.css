@@ -1,0 +1,40 @@
+header {
+    text-align: center;
+}
+
+body {
+    background-color: orange;
+    color: white;
+}
+
+p {
+    width: 40%;
+    margin: 18px auto 18px auto;
+}
+
+#main {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2rem;
+    border: 2px solid violet;
+    padding: 20px;
+    background-color: green;
+}
+
+#smtbtn {
+    margin: 18px auto 5px auto;
+}
+
+#button {
+    background: #0066A2;
+    font-size: 1.1rem;
+    color: #fff;
+    border-radius: 20px;
+}
+
+#answer {
+    text-align: center;
+}
