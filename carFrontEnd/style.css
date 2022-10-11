@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+ol, 
+ul {
+    list-style: none;
+}
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+body {
+    background-color: rgb(14, 14, 14);
+}
+
+header {
+    background-color: rgba(238, 116, 65);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    height: 50px;
+}
+
+.logo {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    line-height: 50px;
+    padding: 0 0 0 20px;
+    text-transform: capitalize;
+    font-family: "SairaCondensed", sans-serif;
+} 
+hr {
+    margin: 3% 0 3% 0;
+    width: 70%;
+    
+}
+  
+
+
+/* -----------------  Menu button  --------------------*/
+.menuButton {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 101;
+} 
+
+    .menuButton > span {
+        background-color: #fff;
+        border-radius: 1px;
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -1px 0 0 -15px;
+        -webkit-transition: height 100ms;
+                transition: height 100ms;
+    }
+
+        .menuButton > span:after, 
+        .menuButton > span:before {
+            content: '';
+            background-color: #fff;
+            border-radius: 1px;
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            margin-left: -15px;
+            -webkit-transition: all 200ms;
+                    transition: all 200ms;
+        }
+            .menuButton > span:after {
+                top: -7px;
+            }
+            .menuButton > span:before {
+                bottom: -7px;
+            }
+            /* ---- Action time! ----*/
+                .menuButton.act > span {
+                    height: 0;
+                }
+                .menuButton.act > span:after, 
+                .menuButton.act > span:before {
+                    background-color: #ff0000;
+                    top: 1px;
+                }
+                .menuButton.act > span:after {
+                    -webkit-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                }
+                .menuButton.act > span:before {
+                    -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                }
+
+.mainMenu {
+    background-color: #E8E7E2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    display: table;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transform: scale(0);
+            transform: scale(0);
+}
+
+    /* ---- Action time ---- */
+    .mainMenu.act {
+        opacity: 1;
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+    .mainMenu.act ul li {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+
+        .mainMenu ul {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .mainMenu li {
+            padding: 8px 0;
+            -webkit-transition: all 400ms 510ms;
+                    transition: all 400ms 510ms;
+            opacity: 0;
+        }
+
+            /* ---- Targeting li's to make them act ----*/
+            .mainMenu li:nth-child(odd) {
+                -webkit-transform: translateX(30%);
+                        transform: translateX(30%);
+            }
+            .mainMenu li:nth-child(even) {
+                -webkit-transform: translateX(-30%);
+                        transform: translateX(-30%);
+            }
+            .mainMenu li:last-child {
+                -webkit-transform: none;
+                        transform: none;
+            }
+
+.mainMenu a {
+    color: #000000;
+    display: inline-block;
+    font-size: 25px;
+}
+
+
+.tire {
+    position: absolute;
+    height: 100px;
+    top: 25%;
+    left: 47%;
+    animation: rotation 5s;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+.linear {
+    animation-timing-function: linear;
+}
+.infinite {
+    animation-iteration-count: infinite;
+}
+
+.car-image {
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin: 5% 0 0 0;
+}
+
+.car-image > section {
+    display: flex;
+    z-index: 99;
+    background-color: rgb(238, 116, 65);
+    width: 20%;
+    height: 75px;
+    position: absolute;
+    top: 170px;
+    right: 0;
+}
+
+h1 {
+    margin: auto;
+}
+
+#car {
+    width: 95%;
+    border: 1px solid black;
+    border-radius: 4%;
+}
+
+.gallery {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    margin-top: 5%;
+}
+
+.gallery > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+footer {
+    background-color: rgb(238, 116, 65);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+@media only screen and (max-width: 750px) {
+    .tire {
+        position: absolute;
+        height: 100px;
+        top: 25%;
+        left: 40%;
+        animation: rotation 5s;
+    }
+    @keyframes rotation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    
+    .linear {
+        animation-timing-function: linear;
+    }
+    .infinite {
+        animation-iteration-count: infinite;
+    }
+
+    .car-image {
+        color: white;
+        width: 100%;
+        height: 80%;
+        text-align: center;
+        margin: 10% 0 0 0;
+    }
+    .car-image > h1 {
+        font-size: 2rem;
+    }
+
+    .logo {
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        line-height: 50px;
+        padding: 0 0 0 20px;
+        text-transform: capitalize;
+    }
+}
